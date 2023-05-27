@@ -1,3 +1,4 @@
+import HomePage from "@/components/HomePage";
 import { WallpaperObject } from "@/components/WallpaperCard";
 import WallpaperList from "@/components/WallpaperList";
 import { supabase } from "@/lib/supabase";
@@ -21,12 +22,9 @@ async function getData() {
 export default async function Home() {
   const data = await getData();
 
-  console.log(data);
   return (
     <main>
-      <div>
-        <WallpaperList wallpapers={data} />
-      </div>
+      <HomePage wallpapers={data} />
     </main>
   );
 }
