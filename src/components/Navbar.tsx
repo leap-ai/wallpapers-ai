@@ -12,7 +12,7 @@ export default function Navbar() {
       zIndex={1}
       backdropFilter={"blur(8px)"}
     >
-      <Heading size={"sm"}>Wallpapers.fyi</Heading>
+      <Heading size={"sm"}>wallpapers.fyi</Heading>
     </HStack>
   );
 }

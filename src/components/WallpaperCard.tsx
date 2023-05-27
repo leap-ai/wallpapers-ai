@@ -37,6 +37,7 @@ export default function WallpaperCard({
             style={{
               borderRadius: "0.375rem",
             }}
+            draggable={false}
           />
         </Box>
       </Skeleton>
