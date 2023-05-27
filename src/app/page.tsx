@@ -1,9 +1,8 @@
 import HomePage from "@/components/HomePage";
 import { WallpaperObject } from "@/components/WallpaperCard";
-import WallpaperList from "@/components/WallpaperList";
 import { supabase } from "@/lib/supabase";
 
-export const revalidate = 0;
+export const revalidate = 60 * 60;
 
 async function getData() {
   const { data, error } = await supabase
