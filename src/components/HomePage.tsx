@@ -24,7 +24,6 @@ export default function HomePage({
 
   return (
     <>
-      <Navbar />
       <Container maxW="container.xl">
         <Stack gap={8} py={16}>
           <VStack>

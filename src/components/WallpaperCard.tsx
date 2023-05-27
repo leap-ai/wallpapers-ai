@@ -2,6 +2,7 @@
 
 import { Box, Skeleton } from "@chakra-ui/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 export type WallpaperObject = {
@@ -25,6 +26,8 @@ export default function WallpaperCard({
             transform: "scale(1.1)",
           }}
           transition={"transform 0.2s ease-in-out"}
+          as={Link}
+          href={`/images/${wallpaper.id}`}
         >
           <Image
             src={wallpaper.imageUrl}
