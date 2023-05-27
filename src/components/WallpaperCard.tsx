@@ -1,6 +1,6 @@
 "use client";
 
-import { Skeleton } from "@chakra-ui/react";
+import { Box, Skeleton } from "@chakra-ui/react";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -17,21 +17,29 @@ export default function WallpaperCard({
   const [hasLoaded, setHasLoaded] = useState(false);
 
   return (
-    <>
+    <Box rounded={"md"} overflow={"clip"}>
       <Skeleton isLoaded={hasLoaded} rounded={"md"}>
-        <Image
-          src={wallpaper.imageUrl}
-          alt={wallpaper.id}
-          height={540}
-          width={960}
-          onLoadingComplete={() => {
-            setHasLoaded(true);
+        <Box
+          _hover={{
+            cursor: "pointer",
+            transform: "scale(1.1)",
           }}
-          style={{
-            borderRadius: "0.375rem",
-          }}
-        />
+          transition={"transform 0.2s ease-in-out"}
+        >
+          <Image
+            src={wallpaper.imageUrl}
+            alt={wallpaper.id}
+            height={540}
+            width={960}
+            onLoadingComplete={() => {
+              setHasLoaded(true);
+            }}
+            style={{
+              borderRadius: "0.375rem",
+            }}
+          />
+        </Box>
       </Skeleton>
-    </>
+    </Box>
   );
 }
