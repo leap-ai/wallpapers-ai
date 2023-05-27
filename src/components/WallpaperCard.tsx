@@ -1,7 +1,8 @@
 "use client";
 
-import { Image, Skeleton } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { Skeleton } from "@chakra-ui/react";
+import Image from "next/image";
+import { useState } from "react";
 
 export type WallpaperObject = {
   id: string;
@@ -14,19 +15,20 @@ export default function WallpaperCard({
   wallpaper: WallpaperObject;
 }) {
   const [hasLoaded, setHasLoaded] = useState(false);
-  const imageRef = useRef<HTMLImageElement>(null);
 
   return (
     <>
       <Skeleton isLoaded={hasLoaded} rounded={"md"}>
         <Image
-          ref={imageRef}
           src={wallpaper.imageUrl}
           alt={wallpaper.id}
-          rounded={"md"}
-          onLoad={() => {
-            console.log("loaded");
+          height={540}
+          width={960}
+          onLoadingComplete={() => {
             setHasLoaded(true);
+          }}
+          style={{
+            borderRadius: "0.375rem",
           }}
         />
       </Skeleton>
