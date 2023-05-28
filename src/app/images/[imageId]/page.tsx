@@ -8,6 +8,7 @@ async function getData(imageId: string) {
   const { data, error } = await supabase
     .from("images")
     .select("id, imageUrl, prompt, created_at")
+    .eq("device", "desktop")
     .eq("id", parseInt(imageId));
 
   if (error) {
