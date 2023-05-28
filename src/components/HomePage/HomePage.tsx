@@ -13,7 +13,8 @@ import {
   VStack,
   useColorMode,
 } from "@chakra-ui/react";
-import Navbar from "./Navbar";
+import Navbar from "../Navbar";
+import Link from "next/link";
 
 export default function HomePage({
   wallpapers,
@@ -28,7 +29,11 @@ export default function HomePage({
         <Stack gap={8} py={16}>
           <VStack>
             <Heading textAlign={"center"}>AI generated wallpapers.</Heading>
-            <HStack>
+            <HStack
+              as={"a"}
+              href={"https://tryleap.ai?ref=wallpapers.fyi"}
+              target={"_blank"}
+            >
               <Text fontSize={"0.8rem"}>Powered by</Text>
               <Image
                 src={`/leap-logo-${

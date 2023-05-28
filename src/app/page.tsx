@@ -1,5 +1,5 @@
-import HomePage from "@/components/HomePage";
-import { WallpaperObject } from "@/components/WallpaperCard";
+import HomePage from "@/components/HomePage/HomePage";
+import { WallpaperObject } from "@/components/HomePage/WallpaperCard";
 import { supabase } from "@/lib/supabase";
 
 export const revalidate = 60 * 60;

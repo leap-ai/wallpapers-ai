@@ -1,5 +1,5 @@
-import ImagePage from "@/components/ImagePage";
-import { WallpaperObject } from "@/components/WallpaperCard";
+import ImagePage from "@/components/ImagePage/ImagePage";
+import { WallpaperObject } from "@/components/HomePage/WallpaperCard";
 import { supabase } from "@/lib/supabase";
 import { notFound } from "next/navigation";
 
