@@ -9,7 +9,7 @@ async function getData() {
   const { data, error } = await supabase
     .from("images")
     .select("id, imageUrl, prompt")
-    .eq("device", "desktop")
+    .neq("device", "mobile")
     .order("id", { ascending: false });
 
   if (error) {
