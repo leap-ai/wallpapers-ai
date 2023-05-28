@@ -8,7 +8,7 @@ async function getData(imageId: string) {
   const { data, error } = await supabase
     .from("images")
     .select("id, imageUrl, prompt, created_at")
-    .neq("device", "mobile")
+    .or("device.eq.desktop,device.is.null")
     .eq("id", parseInt(imageId));
 
   if (error) {
