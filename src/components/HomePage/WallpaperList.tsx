@@ -10,7 +10,7 @@ export default function WallpaperList({
   wallpapers: WallpaperObject[];
 }) {
   return (
-    <SimpleGrid columns={{ base: 2, md: 3, lg: 4, xl: 5 }} gap={4}>
+    <SimpleGrid columns={{ base: 2, md: 3, lg: 4, xl: 6 }} gap={4}>
       {wallpapers.map((wallpaper) => {
         return <WallpaperCard wallpaper={wallpaper} key={wallpaper.id} />;
       })}

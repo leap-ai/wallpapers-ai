@@ -21,6 +21,8 @@ import LargeWallpaper from "./LargeWallpaper";
 import Link from "next/link";
 import Image from "next/image";
 import SocialIcons from "./SocialIcons";
+import Hero from "../Hero";
+import WallpaperList from "../HomePage/WallpaperList";
 
 function formatDate(dateString: string) {
   try {
@@ -38,15 +40,17 @@ function formatDate(dateString: string) {
 export default function ImagePage({
   wallpaper,
   mobile,
+  browseMore,
 }: {
   wallpaper: WallpaperObject;
   mobile?: WallpaperObject;
+  browseMore?: WallpaperObject[];
 }) {
   const { colorMode } = useColorMode();
 
   return (
     <Container maxW="container.lg">
-      <VStack gap={2} py={8}>
+      <VStack gap={4} py={8}>
         <Flex w="full">
           <Button leftIcon={<FaAngleLeft />} as={Link} href={"/"}>
             View all images
@@ -130,6 +134,19 @@ export default function ImagePage({
           </SimpleGrid>
         </SimpleGrid>
       </VStack>
+      {browseMore && (
+        <Stack gap={4}>
+          <Heading size={"sm"}>Browse more</Heading>
+
+          <WallpaperList wallpapers={browseMore} />
+          <VStack>
+            <Button size={"md"} as={Link} href={"/"}>
+              View all wallpapers
+            </Button>
+          </VStack>
+        </Stack>
+      )}
+      <Hero />
     </Container>
   );
 }

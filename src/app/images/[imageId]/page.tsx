@@ -7,9 +7,11 @@ import { Metadata, ResolvingMetadata } from "next";
 interface GetDataResponse {
   desktop?: WallpaperObject;
   mobile?: WallpaperObject;
+  browseMore?: WallpaperObject[];
 }
 
 async function getData(imageId: string) {
+  // Fetch specific image being queried
   const { data: desktop, error: desktopError } = await supabase
     .from("images")
     .select("id, imageUrl, prompt, created_at, jobId")
@@ -25,10 +27,23 @@ async function getData(imageId: string) {
     return {} as GetDataResponse;
   }
 
-  if (!desktop.jobId) {
-    return { desktop } as GetDataResponse;
+  // Fetch all images for browser section.
+  const { data: browseMore, error: browseError } = await supabase
+    .from("images")
+    .select("id, imageUrl, prompt, created_at")
+    .or("device.eq.desktop,device.is.null")
+    .order("id", { ascending: false })
+    .limit(12);
+
+  if (browseError) {
+    console.error(browseError);
   }
 
+  if (!desktop.jobId) {
+    return { desktop, browseMore } as GetDataResponse;
+  }
+
+  // Fetch Mobile image if it exists
   const { data: mobile, error: mobileError } = await supabase
     .from("images")
     .select("id, imageUrl, prompt, created_at")
@@ -41,10 +56,10 @@ async function getData(imageId: string) {
   }
 
   if (!mobile) {
-    return { desktop } as GetDataResponse;
+    return { desktop, browseMore } as GetDataResponse;
   }
 
-  return { desktop, mobile } as GetDataResponse;
+  return { desktop, mobile, browseMore } as GetDataResponse;
 }
 
 type Props = {
@@ -80,7 +95,7 @@ export default async function Home({
   };
 }) {
   const { imageId } = params;
-  const { desktop, mobile } = await getData(imageId);
+  const { desktop, mobile, browseMore } = await getData(imageId);
 
   // If the image doesn't exist, return a 404 page
   if (!desktop) {
@@ -89,7 +104,7 @@ export default async function Home({
 
   return (
     <main>
-      <ImagePage wallpaper={desktop} mobile={mobile} />
+      <ImagePage wallpaper={desktop} mobile={mobile} browseMore={browseMore} />
     </main>
   );
 }
