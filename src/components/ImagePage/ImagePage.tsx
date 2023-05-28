@@ -15,10 +15,11 @@ import {
   VStack,
   useColorMode,
 } from "@chakra-ui/react";
-import { FaAngleLeft, FaDownload } from "react-icons/fa";
+import { FaAngleLeft, FaDesktop, FaDownload, FaMobile } from "react-icons/fa";
 import { WallpaperObject } from "../HomePage/WallpaperCard";
 import LargeWallpaper from "./LargeWallpaper";
 import Link from "next/link";
+import Image from "next/image";
 
 function formatDate(dateString: string) {
   try {
@@ -35,8 +36,10 @@ function formatDate(dateString: string) {
 
 export default function ImagePage({
   wallpaper,
+  mobile,
 }: {
   wallpaper: WallpaperObject;
+  mobile?: WallpaperObject;
 }) {
   const { colorMode } = useColorMode();
 
@@ -71,17 +74,58 @@ export default function ImagePage({
               </Stack>
             )}
           </Stack>
-          <Stack>
-            <Button
-              rightIcon={<FaDownload />}
-              as={"a"}
-              href={wallpaper.imageUrl}
-              target={"_blank"}
-              download
+          <SimpleGrid columns={2} gap={4}>
+            <VStack
+              bg={"blackAlpha.200"}
+              p={4}
+              justifyContent={"center"}
+              h={"full"}
+              rounded={"md"}
             >
-              Download
-            </Button>
-          </Stack>
+              <Image
+                src={wallpaper.imageUrl}
+                width={320}
+                height={180}
+                alt={"Mobile preview"}
+                style={{ borderRadius: "0.375rem" }}
+              />
+              <Button
+                rightIcon={<FaDesktop />}
+                as={"a"}
+                href={wallpaper.imageUrl}
+                target={"_blank"}
+                download
+              >
+                Download Desktop
+              </Button>
+            </VStack>
+            {mobile && (
+              <VStack
+                bg={"blackAlpha.200"}
+                p={4}
+                justifyContent={"center"}
+                h={"full"}
+                rounded={"md"}
+              >
+                <Image
+                  src={mobile.imageUrl}
+                  width={90}
+                  height={160}
+                  alt={"Mobile preview"}
+                  style={{ borderRadius: "0.375rem" }}
+                />
+                <Button
+                  rightIcon={<FaMobile />}
+                  as={"a"}
+                  href={mobile.imageUrl}
+                  target={"_blank"}
+                  download
+                >
+                  Download Mobile
+                </Button>
+              </VStack>
+            )}
+          </SimpleGrid>
         </SimpleGrid>
       </VStack>
     </Container>
