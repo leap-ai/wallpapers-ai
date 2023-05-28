@@ -5,16 +5,20 @@ import {
   Box,
   Button,
   Container,
+  Flex,
+  HStack,
   Heading,
   SimpleGrid,
+  Spacer,
   Stack,
   Text,
   VStack,
   useColorMode,
 } from "@chakra-ui/react";
-import { FaDownload } from "react-icons/fa";
+import { FaAngleLeft, FaDownload } from "react-icons/fa";
 import { WallpaperObject } from "../HomePage/WallpaperCard";
 import LargeWallpaper from "./LargeWallpaper";
+import Link from "next/link";
 
 function formatDate(dateString: string) {
   try {
@@ -38,7 +42,13 @@ export default function ImagePage({
 
   return (
     <Container maxW="container.lg">
-      <VStack gap={8} py={16}>
+      <VStack gap={2} py={8}>
+        <Flex w="full">
+          <Button leftIcon={<FaAngleLeft />} as={Link} href={"/"}>
+            View all images
+          </Button>
+          <Spacer />
+        </Flex>
         <LargeWallpaper wallpaper={wallpaper} />
         <SimpleGrid columns={{ base: 1, md: 2 }} w={"full"} gap={8}>
           <Stack gap={4}>

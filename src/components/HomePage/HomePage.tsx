@@ -26,8 +26,8 @@ export default function HomePage({
   return (
     <>
       <Container maxW="container.xl">
-        <Stack gap={8} py={16}>
-          <VStack>
+        <Stack gap={2}>
+          <VStack py={24}>
             <Heading textAlign={"center"}>AI generated wallpapers.</Heading>
             <HStack
               as={"a"}
