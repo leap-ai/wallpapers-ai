@@ -42,6 +42,7 @@ export default function WallpaperCard({
                 borderRadius: "0.375rem",
               }}
               draggable={false}
+              loading="lazy"
             />
           </Box>
         </Link>

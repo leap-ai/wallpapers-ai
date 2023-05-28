@@ -8,7 +8,6 @@ async function getData() {
   const { data, error } = await supabase
     .from("images")
     .select("id, imageUrl, prompt")
-    .limit(64)
     .order("id", { ascending: false });
 
   if (error) {
