@@ -33,8 +33,8 @@ export default function WallpaperCard({
             <Image
               src={wallpaper.imageUrl}
               alt={wallpaper.id}
-              height={480}
-              width={960}
+              height={180}
+              width={320}
               onLoadingComplete={() => {
                 setHasLoaded(true);
               }}
