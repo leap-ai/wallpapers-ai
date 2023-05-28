@@ -20,29 +20,29 @@ export default function WallpaperCard({
   return (
     <Box rounded={"md"} overflow={"clip"}>
       <Skeleton isLoaded={hasLoaded} rounded={"md"}>
-        <Box
-          _hover={{
-            cursor: "pointer",
-            transform: "scale(1.1)",
-          }}
-          transition={"transform 0.2s ease-in-out"}
-          as={Link}
-          href={`/images/${wallpaper.id}`}
-        >
-          <Image
-            src={wallpaper.imageUrl}
-            alt={wallpaper.id}
-            height={540}
-            width={960}
-            onLoadingComplete={() => {
-              setHasLoaded(true);
+        <Link href={`/images/${wallpaper.id}`}>
+          <Box
+            transition={"transform 0.2s ease-in-out"}
+            _hover={{
+              cursor: "pointer",
+              transform: "scale(1.1)",
             }}
-            style={{
-              borderRadius: "0.375rem",
-            }}
-            draggable={false}
-          />
-        </Box>
+          >
+            <Image
+              src={wallpaper.imageUrl}
+              alt={wallpaper.id}
+              height={540}
+              width={960}
+              onLoadingComplete={() => {
+                setHasLoaded(true);
+              }}
+              style={{
+                borderRadius: "0.375rem",
+              }}
+              draggable={false}
+            />
+          </Box>
+        </Link>
       </Skeleton>
     </Box>
   );

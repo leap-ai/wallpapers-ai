@@ -1,14 +1,13 @@
-import HomePage from "@/components/HomePage";
+import ImagePage from "@/components/ImagePage";
 import { WallpaperObject } from "@/components/WallpaperCard";
 import { supabase } from "@/lib/supabase";
+import { notFound } from "next/navigation";
 
-export const revalidate = 60 * 60;
-
-async function getData() {
+async function getData(imageId: string) {
   const { data, error } = await supabase
     .from("images")
     .select("*")
-    .eq("id", 109);
+    .eq("id", parseInt(imageId));
 
   if (error) {
     // This will activate the closest `error.js` Error Boundary
@@ -17,15 +16,24 @@ async function getData() {
   return data as WallpaperObject[];
 }
 
-export default async function Home() {
-  const data = await getData();
+export default async function Home({
+  params,
+}: {
+  params: {
+    imageId: string;
+  };
+}) {
+  const { imageId } = params;
+  const data = await getData(imageId);
 
-  console.log(data);
+  // If the image doesn't exist, return a 404 page
+  if (data.length === 0) {
+    notFound();
+  }
 
   return (
     <main>
-      <HomePage wallpapers={data} />
-      <p>{JSON.stringify(data)}</p>
+      <ImagePage wallpaper={data[0]} />
     </main>
   );
 }
