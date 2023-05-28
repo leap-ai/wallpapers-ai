@@ -32,6 +32,7 @@ async function getData(imageId: string) {
     .from("images")
     .select("id, imageUrl, prompt, created_at")
     .or("device.eq.desktop,device.is.null")
+    .neq("id", parseInt(imageId))
     .order("id", { ascending: false })
     .limit(12);
 
