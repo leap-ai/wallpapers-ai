@@ -3,7 +3,7 @@ import { WallpaperObject } from "@/components/HomePage/WallpaperCard";
 import { supabase } from "@/lib/supabase";
 import { Metadata } from "next";
 
-export const revalidate = 60 * 60;
+export const revalidate = 0;
 
 async function getData() {
   const { data, error } = await supabase
