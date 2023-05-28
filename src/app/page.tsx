@@ -7,7 +7,7 @@ export const revalidate = 60 * 60;
 async function getData() {
   const { data, error } = await supabase
     .from("images")
-    .select("*")
+    .select("id, imageUrl, prompt")
     .limit(64)
     .order("id", { ascending: false });
 

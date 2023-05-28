@@ -8,6 +8,8 @@ import { useState } from "react";
 export type WallpaperObject = {
   id: string;
   imageUrl: string;
+  prompt: string;
+  created_at: string;
 };
 
 export default function WallpaperCard({

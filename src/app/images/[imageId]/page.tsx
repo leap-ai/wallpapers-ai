@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 async function getData(imageId: string) {
   const { data, error } = await supabase
     .from("images")
-    .select("*")
+    .select("id, imageUrl, prompt, created_at")
     .eq("id", parseInt(imageId));
 
   if (error) {
