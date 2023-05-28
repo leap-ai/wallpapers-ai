@@ -20,6 +20,7 @@ import { WallpaperObject } from "../HomePage/WallpaperCard";
 import LargeWallpaper from "./LargeWallpaper";
 import Link from "next/link";
 import Image from "next/image";
+import SocialIcons from "./SocialIcons";
 
 function formatDate(dateString: string) {
   try {
@@ -51,6 +52,7 @@ export default function ImagePage({
             View all images
           </Button>
           <Spacer />
+          <SocialIcons wallpaper={wallpaper} />
         </Flex>
         <LargeWallpaper wallpaper={wallpaper} />
         <SimpleGrid columns={{ base: 1, md: 2 }} w={"full"} gap={8}>
