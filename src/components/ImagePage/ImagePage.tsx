@@ -51,14 +51,14 @@ export default function ImagePage({
   return (
     <Container maxW="container.lg">
       <VStack gap={4} py={8}>
+        <LargeWallpaper wallpaper={wallpaper} />
         <Flex w="full">
           <Button leftIcon={<FaAngleLeft />} as={Link} href={"/"}>
-            View all images
+            Back to all
           </Button>
           <Spacer />
           <SocialIcons wallpaper={wallpaper} />
         </Flex>
-        <LargeWallpaper wallpaper={wallpaper} />
         <SimpleGrid columns={{ base: 1, md: 2 }} w={"full"} gap={8}>
           <Stack gap={4}>
             <Stack>
