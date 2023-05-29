@@ -4,6 +4,7 @@ import React from "react";
 import {
   Box,
   Button,
+  Center,
   Container,
   Flex,
   HStack,
@@ -59,7 +60,7 @@ export default function ImagePage({
           <Spacer />
           <SocialIcons wallpaper={wallpaper} />
         </Flex>
-        <SimpleGrid columns={{ base: 1, md: 2 }} w={"full"} gap={8}>
+        <SimpleGrid columns={{ base: 1, lg: 2 }} w={"full"} gap={8}>
           <Stack gap={4}>
             <Stack>
               <Heading size={"sm"}>Created</Heading>
@@ -88,13 +89,15 @@ export default function ImagePage({
               h={"full"}
               rounded={"md"}
             >
-              <Image
-                src={wallpaper.imageUrl}
-                width={320}
-                height={180}
-                alt={"Mobile preview"}
-                style={{ borderRadius: "0.375rem" }}
-              />
+              <Center h={"full"}>
+                <Image
+                  src={wallpaper.imageUrl}
+                  width={320}
+                  height={180}
+                  alt={"Mobile preview"}
+                  style={{ borderRadius: "0.375rem" }}
+                />
+              </Center>
               <Button
                 rightIcon={<FaDesktop />}
                 as={"a"}
@@ -113,13 +116,15 @@ export default function ImagePage({
                 h={"full"}
                 rounded={"md"}
               >
-                <Image
-                  src={mobile.imageUrl}
-                  width={90}
-                  height={160}
-                  alt={"Mobile preview"}
-                  style={{ borderRadius: "0.375rem" }}
-                />
+                <Center h={"full"}>
+                  <Image
+                    src={mobile.imageUrl}
+                    width={90}
+                    height={160}
+                    alt={"Mobile preview"}
+                    style={{ borderRadius: "0.375rem" }}
+                  />
+                </Center>
                 <Button
                   rightIcon={<FaMobile />}
                   as={"a"}
