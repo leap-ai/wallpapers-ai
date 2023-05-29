@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import { Providers } from "./providers";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export const metadata = {
   title: "Wallpapers by AI",
@@ -14,6 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <GoogleAnalytics />
         <Providers>
           <Navbar />
           {children}
