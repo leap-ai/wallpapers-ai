@@ -15,6 +15,7 @@ export default function Hero() {
   return (
     <VStack py={24}>
       <Heading textAlign={"center"}>AI generated wallpapers.</Heading>
+      <Text>New wallpaper auto-generated every hour.</Text>
       <HStack
         as={"a"}
         href={"https://tryleap.ai?ref=wallpapers.fyi"}
