@@ -20,10 +20,10 @@ async function getData(imageId: string) {
     .single();
 
   if (desktopError) {
-    throw new Error("Failed to fetch data");
+    console.error(desktopError);
   }
 
-  if (!desktop) {
+  if (!desktop || desktopError) {
     return {} as GetDataResponse;
   }
 
