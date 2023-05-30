@@ -1,6 +1,6 @@
 # Wallpapers - AI Generated Wallpapers Browser App
 
-![Wallpapers Banner](https://api.wallpapers.fyi/banner-image.jpg)
+![Wallpapers Banner](https://wallpapers.fyi/banner-image.jpg)
 
 Wallpapers is a web application designed to showcase the power and versatility of Leap's AI-generated images. It enables you to browse and download stunning AI-generated wallpapers that update every hour. Built with Next.js and Supabase, Wallpapers is a perfect starting point for developers looking to get hands-on with AI-powered images using Leap.
 
