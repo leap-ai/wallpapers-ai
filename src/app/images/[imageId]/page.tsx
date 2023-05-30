@@ -10,6 +10,8 @@ interface GetDataResponse {
   browseMore?: WallpaperObject[];
 }
 
+export const revalidate = 0;
+
 async function getData(imageId: string) {
   // Fetch specific image being queried
   const { data: desktop, error: desktopError } = await supabase
