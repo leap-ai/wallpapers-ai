@@ -10,8 +10,6 @@ interface GetDataResponse {
   browseMore?: WallpaperObject[];
 }
 
-export const revalidate = 0;
-
 async function getData(imageId: string) {
   // Fetch specific image being queried
   const { data: desktop, error: desktopError } = await supabase
@@ -20,8 +18,6 @@ async function getData(imageId: string) {
     .or("device.eq.desktop,device.is.null")
     .eq("id", parseInt(imageId))
     .single();
-
-  console.log({ desktop, desktopError });
 
   if (desktopError) {
     console.error(desktopError);
@@ -40,8 +36,6 @@ async function getData(imageId: string) {
     .order("id", { ascending: false })
     .limit(12);
 
-  console.log({ browseMore, browseError });
-
   if (browseError) {
     console.error(browseError);
   }
@@ -58,10 +52,8 @@ async function getData(imageId: string) {
     .eq("jobId", desktop.jobId)
     .single();
 
-  console.log({ mobile, mobileError });
-
   if (mobileError) {
-    throw new Error("Failed to fetch data");
+    console.error(mobileError);
   }
 
   if (!mobile) {
